@@ -1,4 +1,6 @@
+#include <stdio.h>
 #include "main.h"
+
 /**
  * _strpbrk - Entry point
  * @s: input
@@ -7,17 +9,16 @@
  */
 char *_strpbrk(char *s, char *accept)
 {
-		int k;
+	int i, n;
 
-		while (*s)
+	for (i = 0; s[i] != '\0'; i++)
+	{
+		for (n = 0; accept[n] != '\0'; n++)
 		{
-			for (k = 0; accept[k]; k++)
-			{
-			if (*s == accept[k])
-			return (s);
-			}
-		s++;
+			if (s[i] == accept[n])
+				return (s + i);
 		}
+	}
 
-	return ('\0');
+	return (NULL);
 }
