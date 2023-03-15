@@ -1,64 +1,60 @@
 #include "main.h"
-#include <stdio.h>
 #include <stdlib.h>
-
 /**
- * strtow - concatenates all the arguments of your program
- *@str: string
- *@av: arguments
- * Return: a pointer to a new string
+ *strtow-splits words into string
+ *@str:string to be split
+ *Return:pointer to pointer to words
  */
+
 char **strtow(char *str)
 {
-	int i, w, j, k, count, m, wordf;
-	char **p;
-	char *x;
+	int i, k, j = -1, a = 0, start, end, word = 0;
+	char **ptr;
 
-	w = 0;
-	j = 0;
-	i = 0;
-	count = 0;
-	if (*str == '\0' || str == NULL)
+	if (str == NULL || str[0] == '\0')
 		return (NULL);
-	for (i = 0; str[i] != '\0'; i++)
+
+	for (i = 0; str[i]; i++)
 	{
-		if (str[i] == ' ' && (str[i + 1] != ' ' || str[i + 1] == '\0'))
-			w++;
+		if ((str[i - 1] == ' ' || i == 0) && str[i] != ' ')
+			word++;
 	}
-	p = (char **)malloc((w + 1) * sizeof(char *));
-	if (p == NULL)
+	if (word == 0)
 		return (NULL);
-	for (wordf = 0; str[wordf] && j <= w; wordf++)
+	ptr = malloc(sizeof(char *) * (word + 1));
+
+	if (ptr == NULL)
+		return (NULL);
+
+	for (i = 0; str[i]; i++)
 	{
-		count = 0;
-		if (str[wordf] != ' ')
+		if ((str[i - 1] == ' ' || i == 0) && str[i] != ' ')
 		{
-			for (i = wordf ; str[i] != '\0'; i++)
+			k = 0;
+			j++;
+			start = i;
+
+			while (str[i] != ' ' && str[i])
 			{
-				if (str[i] == ' ')
-					break;
-				count++;
+				k++;
+				i++;
 			}
-			*(p + j) = (char *)malloc((count + 1) * sizeof(char));
-			if (*(p + j) == NULL)
+			end = (i - 1);
+			ptr[j] = malloc(sizeof(char) * (k + 1));
+			if (ptr[j] == NULL)
 			{
-				for (k = 0; k <= j; k++)
-				{
-					x = p[k];
-					free(x);
-				}
-				free(p);
+				for (i = 0; i < j; i++)
+					free(ptr[i]);
+				free(ptr);
 				return (NULL);
 			}
-			for (m = 0; wordf < i; wordf++)
+			for (a = 0, i = start; i <= end; i++, a++)
 			{
-				p[j][m] = str[wordf];
-				m++;
+				ptr[j][a] = str[i];
 			}
-			p[j][m] = '\0';
-			j++;
+			ptr[j][a] = '\0';
 		}
 	}
-	p[j] = NULL;
-	return (p);
+	ptr[j + 1] = NULL;
+	return (ptr);
 }
