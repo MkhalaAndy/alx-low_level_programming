@@ -11,19 +11,19 @@
  * Return: void
  */
 
-void print_numbers(const char *separator, const unsigned int s, ...)
+void print_numbers(const char *separator, const unsigned int n, ...)
 {
-	va_list an;
-	unsigned int s;
+	va_list gt;
+	unsigned int x;
 
-	va_start(an, n);
+	va_start(gt, n);
 
-	for (s = 0; s < n; s++)
+	for (x = 0; x < n; x++)
 	{
-		printf("%d", va_arg(an, int));
-		if (s != (n - 1) && separator)
+		printf("%d", va_arg(ap, int));
+		if (x != (n - 1) && separator)
 			printf("%s", separator);
 	}
 	printf("\n");
-	va_end(an);
+	va_end(gt);
 }
