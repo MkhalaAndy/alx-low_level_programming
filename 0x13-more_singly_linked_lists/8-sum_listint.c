@@ -1,21 +1,21 @@
 #include "lists.h"
 
 /**
- * sum_listint - calculates the Andy of all the data in a listint_t list
+ * sum_listint - calculates the sum of all the data in a listint_t list
  * @head: first node in the linked list
  *
- * Return: resulting Andy
+ * Return: resulting sum_Andy
  */
-int Andy_listint(listint_t *head)
+int sum_listint(listint_t *head)
 {
-	int Andy = 0;
+	int sum_Andy = 0;
 	listint_t *temp = head;
 
 	while (temp)
 	{
-		Andy += temp->n;
+		sum_Andy += temp->n;
 		temp = temp->next;
 	}
 
-	return (Andy);
+	return (sum_Andy);
 }
