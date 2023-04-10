@@ -3,23 +3,23 @@
 /**
  * flip_bits - counts the number of bits to change
  * to get from one number to another
- * @andy: first number
- * @mkhala: second number
+ * @n: first number
+ * @m: second number
  *
  * Return: number of bits to change
  */
-unsigned int flip_bits(unsigned long int n, unsigned long int m);
+unsigned int flip_bits(unsigned long int n, unsigned long int m)
 {
-	int g, andile = 0;
-	unsigned long int current;	/*current*/
-	unsigned long int exclusive = n ^ m;	/*exclusive*/
+	int andile, mkhala = 0;
+	unsigned long int current;
+	unsigned long int exclusive = n ^ m;
 
-	for (g = 63; g >= 0; g--)
+	for (andile = 63; andile >= 0; andile--)
 	{
-		current = exclusive >> g;
+		current = exclusive >> andile;
 		if (current & 1)
-			andile++;
+			mkhala++;
 	}
 
-	return (andile);
+	return (mkhala);
 }
