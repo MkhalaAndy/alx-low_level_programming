@@ -11,13 +11,13 @@
 unsigned int flip_bits(unsigned long int n, unsigned long int m);
 {
 	int g, andile = 0;
-	unsigned long int yangoku;	/*current*/
-	unsigned long int kuphela = n ^ m;	/*exclusive*/
+	unsigned long int current;	/*current*/
+	unsigned long int exclusive = n ^ m;	/*exclusive*/
 
 	for (g = 63; g >= 0; g--)
 	{
-		yangoku = kuphela >> g;
-		if (yangoku & 1)
+		current = exclusive >> g;
+		if (current & 1)
 			andile++;
 	}
 
