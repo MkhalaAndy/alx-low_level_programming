@@ -8,16 +8,16 @@
  *
  * Return: number of bits to change
  */
-unsigned int flip_bits(unsigned long int andy, unsigned long int mkhala)
+unsigned int flip_bits(unsigned long int n, unsigned long int m);
 {
 	int g, andile = 0;
-	unsigned long int current;
-	unsigned long int exclusive = andy ^ mkhala;
+	unsigned long int yangoku;	/*current*/
+	unsigned long int kuphela = n ^ m;	/*exclusive*/
 
 	for (g = 63; g >= 0; g--)
 	{
-		current = exclusive >> i;
-		if (current & 1)
+		yangoku = kuphela >> g;
+		if (yangoku & 1)
 			andile++;
 	}
 
